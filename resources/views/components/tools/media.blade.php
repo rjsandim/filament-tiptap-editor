@@ -5,7 +5,7 @@
 
 @php
     if (str(config('filament-tiptap-editor.media_action'))->contains('\\')) {
-        $action = "\$wire.dispatchFormEvent('tiptap::setMediaContent', '" . $statePath . "', arguments);";
+        $action = "\$wire.mountFormComponentAction('" . $statePath . "', 'filament_tiptap_media', arguments);";
     } else {
         $action = "this.\$dispatch('open-modal', {id: '" . config('filament-tiptap-editor.media_action') . "', statePath: '" . $statePath . "'}, arguments)";
     }

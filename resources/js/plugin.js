@@ -648,7 +648,7 @@ export default function tiptap({
         openBlockSettings(event) {
             if (event.detail.statePath !== this.statePath) return
 
-            this.$wire.dispatchFormEvent("tiptap::updateBlock", this.statePath, event.detail);
+            this.$wire.mountFormComponentAction(this.statePath, 'updateBlock', event.detail);
         },
         updateBlock(event) {
             if (event.detail.statePath !== this.statePath) return

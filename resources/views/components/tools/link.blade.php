@@ -29,7 +29,7 @@
                 coordinates: this.editor().view.state.selection.ranges,
             };
 
-            $wire.dispatchFormEvent('tiptap::setLinkContent', '{{ $statePath }}', arguments);
+            $wire.mountFormComponentAction('{{ $statePath }}', 'filament_tiptap_link', arguments);
         }
     }"
 />

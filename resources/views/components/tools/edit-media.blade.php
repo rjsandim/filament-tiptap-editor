@@ -4,7 +4,7 @@
 ])
 
 @php
-    $action = "\$wire.dispatchFormEvent('tiptap::editMediaContent', '" . $statePath . "', arguments);";
+    $action = "\$wire.mountFormComponentAction('" . $statePath . "', 'filament_tiptap_edit_media', arguments);";
 @endphp
 
 <x-filament-tiptap-editor::button

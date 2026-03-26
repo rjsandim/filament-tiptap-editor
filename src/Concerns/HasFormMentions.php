@@ -10,7 +10,7 @@ trait HasFormMentions
     #[Renderless]
     public function getMentionsItems(string $statePath, string $search): array
     {
-        foreach ($this->getCachedForms() as $form) {
+        foreach ($this->getCachedSchemas() as $form) {
             if ($results = $this->searchFormComponents($form->getComponents(), $statePath, $search)) {
                 return $results;
             }
@@ -27,7 +27,7 @@ trait HasFormMentions
             }
 
             // Search within child containers if available
-            foreach ($component->getChildComponentContainers() as $container) {
+            foreach ($component->getChildSchemas() as $container) {
                 if ($container->isHidden()) {
                     continue;
                 }
