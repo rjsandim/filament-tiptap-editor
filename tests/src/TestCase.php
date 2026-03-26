@@ -16,11 +16,21 @@ use Filament\Widgets\WidgetsServiceProvider;
 use FilamentTiptapEditor\FilamentTiptapEditorServiceProvider;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Livewire\LivewireServiceProvider;
+use Livewire\Mechanisms\DataStore;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
 {
     use LazilyRefreshDatabase;
+
+   protected function setUp(): void {
+      parent::setUp();
+
+      // Ensure Livewire DataStore is a proper singleton across the app lifecycle.
+      // Without this, the test environment may resolve different DataStore instances
+      // between set/get calls, causing getErrorBag() to return null.
+      app()->singleton(DataStore::class);
+   }
 
     protected function getPackageProviders($app): array
     {

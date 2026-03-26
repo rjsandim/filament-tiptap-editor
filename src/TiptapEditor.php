@@ -76,7 +76,7 @@ class TiptapEditor extends Field
     {
         parent::setUp();
 
-        $this->tools = config('filament-tiptap-editor.profiles.default');
+       $this->tools = config('filament-tiptap-editor.profiles.default') ?? [];
         $this->extensions = config('filament-tiptap-editor.extensions') ?? [];
 
         $this->afterStateHydrated(function (TiptapEditor $component, string | array | null $state): void {
@@ -305,7 +305,7 @@ class TiptapEditor extends Field
     public function profile(string $profile): static
     {
         $this->profile = $profile;
-        $this->tools = config('filament-tiptap-editor.profiles.' . $profile);
+       $this->tools = config('filament-tiptap-editor.profiles.' . $profile) ?? [];
 
         return $this;
     }
